@@ -41,9 +41,14 @@
         email = dommmel@gmail.com
 
 [credential]
-        helper = osxkeychain
+	helper = osxkeychain
 
 [push]
         default = simple
+
 [heroku]
 	account = personal
+
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
