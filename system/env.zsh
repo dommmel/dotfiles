@@ -1,2 +1,2 @@
-export EDITOR_BG='subl'
-export EDITOR='subl --wait'
+export EDITOR_BG='vim'
+export EDITOR='vim'
