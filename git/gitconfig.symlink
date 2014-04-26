@@ -34,14 +34,12 @@
 
 [git-tmbundle]
         gitnub-path = /usr/local/bin/nub
-        gitx-path = /Applications/GitX.app/Contents/MacOS/GitX
 
 [user]
         name = Dommmel
         email = dommmel@gmail.com
 
 [credential]
-	helper = osxkeychain
 
 [push]
         default = simple
