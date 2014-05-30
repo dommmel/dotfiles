@@ -4,9 +4,9 @@ desc "Hook our dotfiles into system-standard positions."
 task :install do
   linkables = Dir.glob('*/**{.symlink}')
 
-  skip_all = false
-  overwrite_all = false
-  backup_all = false
+  skip_all = ENV["skip_all"] || false
+  overwrite_all = ENV["overwrite_all"] || false
+  backup_all = ENV["backup_all"] || false
 
   linkables.each do |linkable|
     overwrite = false
@@ -55,3 +55,4 @@ task :uninstall do
 end
 
 task :default => 'install'
+
