@@ -1,11 +1,13 @@
+setopt extended_glob
+
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
 
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Code
 
-# source every .zsh file in this rep
-for config_file ($ZSH/**/*.zsh) [[ "$(basename $config_file)" == "completion.zsh" ]] || source $config_file
+# source every .zsh file in this rep except the ones below ./vendor
+for config_file ($ZSH/(^vendor*/)#*.zsh) [[ "$(basename $config_file)" == "completion.zsh" ]] || source $config_file
 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
@@ -20,3 +22,39 @@ compinit
 
 # load every completion after autocomplete loads
 for config_file ($ZSH/**/completion.zsh) source $config_file
+# Initialize vendor plugins
+
+VENDOR=$ZSH/zsh/vendor
+source_if_exists () {
+    [[ -a "$1" ]] && source "$1"
+}
+
+source_if_exists $VENDOR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if [[ -a $VENDOR/zsh-history-substring-search/zsh-history-substring-search.zsh ]]
+then
+	source $VENDOR/zsh-history-substring-search/zsh-history-substring-search.zsh
+	# bind UP and DOWN arrow keys
+	zmodload zsh/terminfo
+	bindkey "$terminfo[kcuu1]" history-substring-search-up
+	bindkey "$terminfo[kcud1]" history-substring-search-down
+fi
+
+# Setup zsh-autosuggestions
+if [[ -a $VENDOR/zsh-autosuggestions/autosuggestions.zsh ]]
+then
+	source $VENDOR//zsh-autosuggestions/autosuggestions.zsh
+
+	# Enable autosuggestions automatically
+	zle-line-init() {
+		zle autosuggest-start
+	}
+	zle -N zle-line-init
+
+	# use ctrl+t to toggle autosuggestions(hopefully this wont be needed as
+	# zsh-autosuggestions is designed to be unobtrusive)
+	bindkey '^T' autosuggest-toggle
+fi
+
+
+unset VENDOR
