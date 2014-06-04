@@ -7,7 +7,17 @@ cd ~/.dotfiles
 script/bootstrap
 ```
 
-
-
 The master branch of this repo is for a mac/osx machine. There is also a [branch tailored to linux servers](https://github.com/dommmel/dotfiles/tree/linux-server).
 
+
+
+Example: Setting up dotfiles within Vagrant
+
+```
+# Install and set zsh
+apt-get install zsh git -y
+chsh -s $(which zsh) vagrant
+# Install and bootstrap dotfiles
+gem install rake
+su - vagrant -c "git clone https://github.com/dommmel/dotfiles ~/.dotfiles && cd ~/.dotfiles && git checkout linux-server && overwrite_all=true ./script/bootstrap"
+```
