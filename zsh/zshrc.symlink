@@ -22,6 +22,7 @@ compinit
 
 # load every completion after autocomplete loads
 for config_file ($ZSH/**/completion.zsh) source $config_file
+
 # Initialize vendor plugins
 
 VENDOR=$ZSH/zsh/vendor
@@ -35,9 +36,8 @@ if [[ -a $VENDOR/zsh-history-substring-search/zsh-history-substring-search.zsh ]
 then
 	source $VENDOR/zsh-history-substring-search/zsh-history-substring-search.zsh
 	# bind UP and DOWN arrow keys
-	zmodload zsh/terminfo
-	bindkey "$terminfo[kcuu1]" history-substring-search-up
-	bindkey "$terminfo[kcud1]" history-substring-search-down
+	bindkey '^[[A' history-substring-search-up
+  bindkey '^[[B' history-substring-search-down
 fi
 
 # Setup zsh-autosuggestions
