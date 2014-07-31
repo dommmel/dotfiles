@@ -1,1 +1,5 @@
-if which rbenv > /dev/null; then eval "$(rbenv init - zsh)"; fi
+# init according to man page
+if (( $+commands[rbenv] ))
+then
+  eval "$(rbenv init -)"
+fi
