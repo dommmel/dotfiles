@@ -33,7 +33,9 @@
         up = !$ZSH/bin/git-up
         wtf = !$ZSH/bin/git-wtf
         count = !git shortlog -sn
+        cm = commit -am
         cam = !git add -A && git commit -m
+        rv = remote -v
         undo = reset --soft HEAD~1 
         amend = commit -a --amend
 
