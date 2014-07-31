@@ -29,11 +29,13 @@
 
 [alias]
         co = checkout
+        all = add -A
+        up = !$ZSH/bin/git-up
         wtf = !$ZSH/bin/git-wtf
         count = !git shortlog -sn
-
-[git-tmbundle]
-        gitnub-path = /usr/local/bin/nub
+        cam = !git add -A && git commit -m
+        undo = reset --soft HEAD~1 
+        amend = commit -a --amend
 
 [user]
         name = Dommmel

@@ -3,13 +3,6 @@ require 'irb/completion'
 require 'irb/ext/save-history'
 require 'rubygems'
 
-%w[rubygems looksee wirble].each do |gem|
-  begin
-    require gem
-  rescue LoadError
-  end
-end
-
 if defined? IRB.conf
   IRB.conf[:SAVE_HISTORY] = 1000
   IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
