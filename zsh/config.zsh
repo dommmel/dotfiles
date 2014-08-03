@@ -47,4 +47,9 @@ bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char
 
+# Bash-like command editing 
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^X^e' edit-command-line
+
 verbose_completion
