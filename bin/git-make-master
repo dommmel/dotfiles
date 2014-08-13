@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# Make the current branch master
+# http://stackoverflow.com/questions/2763006/change-the-current-branch-to-master-in-git
+#
+# Usage: 
+#   git-make-master [branchname]
+# 
+# Options:   
+#   [branchname] defaults to the currently checked-out branch
+
+if [ -z "$1" ]
+  then
+    _branch=$(git symbolic-ref -q HEAD | sed -e 's|^refs/heads/||')
+  else
+    _branch="$1"
+fi
+
+if [ ${_branch} = "master" ]
+  then
+    echo "master is already master... duh!"
+    exit
+fi
+
+
+git checkout ${_branch} && \
+git merge --strategy=ours --no-commit master && \
+git commit -m "promoting ${_branch} to master"  && \
+git checkout master && \
+git merge ${_branch}
