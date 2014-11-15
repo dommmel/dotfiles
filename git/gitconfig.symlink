@@ -38,6 +38,7 @@
         rv = remote -v
         undo = reset --soft HEAD~1 
         amend = commit -a --amend
+        clear = clean -d -x -i
 
 [user]
         name = Dommmel

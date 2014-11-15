@@ -47,6 +47,18 @@ bindkey '^[[3~' delete-char
 bindkey '^[^N' newtab
 bindkey '^?' backward-delete-char
 
+# When you hit ... it will produce a slash
+# and a ../ for each . you type after that.
+rationalise-dot() {
+  if [[ $LBUFFER = *.. ]]; then
+    LBUFFER+=/..
+  else
+    LBUFFER+=.
+  fi
+}
+zle -N rationalise-dot
+bindkey . rationalise-dot
+
 # Bash-like command editing 
 autoload -U edit-command-line
 zle -N edit-command-line
