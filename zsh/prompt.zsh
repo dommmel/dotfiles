@@ -10,7 +10,7 @@ else
 fi
 
 git_branch() {
-  echo $($git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
+  echo $(git name-rev --name-only HEAD)
 }
 
 git_dirty() {
@@ -20,9 +20,9 @@ git_dirty() {
   else
     if [[ $($git status --porcelain) == "" ]]
     then
-      echo "on %{$fg_bold[green]%}$(git_prompt_info)%{$reset_color%}"
+      echo "on %{$fg_bold[green]%}$(git_branch)%{$reset_color%}"
     else
-      echo "on %{$fg_bold[red]%}$(git_prompt_info)%{$reset_color%}"
+      echo "on %{$fg_bold[red]%}$(git_branch)%{$reset_color%}"
     fi
   fi
 }
