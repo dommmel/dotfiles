@@ -67,8 +67,20 @@ rb_prompt() {
   fi
 }
 
+current_dir_path() {
+  CURRENT=`dirname ${PWD}`
+  if [[ $CURRENT = / ]]; then
+    echo ""
+  elif [[ $PWD = $HOME ]]; then
+    echo ""
+  else
+    CURRENT=$(print -P %7~)
+    echo "${CURRENT%/*}/"
+  fi
+}
+
 directory_name() {
-  echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
+  echo "%{$fg_bold[grey]%}$(current_dir_path)%{$reset_color%}%{$fg[cyan]%}%1~%{$reset_color%}"
 }
 
 export PROMPT=$'\n$(directory_name) $(git_dirty)$(need_push)\n› '
