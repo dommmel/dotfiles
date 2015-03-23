@@ -29,6 +29,7 @@
 
 [alias]
         co = checkout
+        save = !git add -A && git commit -m 'SAVEPOINT'
         all = add -A
         up = !$ZSH/bin/git-up
         wtf = !$ZSH/bin/git-wtf
@@ -36,9 +37,10 @@
         cm = commit -am
         cam = !git add -A && git commit -m
         rv = remote -v
-        undo = reset --soft HEAD~1 
+        undo = reset --mixed HEAD~1 
         amend = commit -a --amend
         clear = clean -d -x -i
+        wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
 
 [user]
         name = Dommmel
