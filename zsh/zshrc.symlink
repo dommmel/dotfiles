@@ -6,10 +6,6 @@ export ZSH=$HOME/.dotfiles
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Code
 
-# initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit
-compinit
-
 # source every .zsh file in this rep except the ones below ./vendor
 for config_file ($ZSH/(^vendor*/)#*.zsh) [[ "$(basename $config_file)" == "completion.zsh" ]] || source $config_file
 
@@ -20,6 +16,9 @@ then
   source ~/.localrc
 fi
 
+# initialize autocomplete here, otherwise functions won't be loaded
+autoload -U compinit
+compinit
 
 # load every completion after autocomplete loads
 for config_file ($ZSH/**/completion.zsh) source $config_file
@@ -32,6 +31,8 @@ source_if_exists () {
 }
 
 source_if_exists $VENDOR/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source_if_exists $VENDOR/zaw/zaw.plugin.zsh
+bindkey '^X,' zaw
 
 if [[ -a $VENDOR/zsh-history-substring-search/zsh-history-substring-search.zsh ]]
 then
@@ -68,5 +69,9 @@ if [[ $TERM_PROGRAM == "Apple_Terminal" ]] && [[ -z "$INSIDE_EMACS" ]] {
 
   chpwd
 }
+
+# Google Cloud SDK.
+source "$HOME/SDKs/google-cloud-sdk/path.zsh.inc"
+source "$HOME/SDKs/google-cloud-sdk/completion.zsh.inc"
 
 unset VENDOR

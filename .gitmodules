@@ -7,3 +7,6 @@
 [submodule "zsh/vendor/zsh-autosuggestions"]
 	path = zsh/vendor/zsh-autosuggestions
 	url = git://github.com/tarruda/zsh-autosuggestions
+[submodule "zsh/vendor/zaw"]
+	path = zsh/vendor/zaw
+	url = git@github.com:zsh-users/zaw.git
