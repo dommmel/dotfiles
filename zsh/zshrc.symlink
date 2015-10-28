@@ -6,6 +6,10 @@ export ZSH=$HOME/.dotfiles
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Code
 
+# initialize autocomplete here, otherwise functions won't be loaded
+autoload -U compinit
+compinit
+
 # source every .zsh file in this rep except the ones below ./vendor
 for config_file ($ZSH/(^vendor*/)#*.zsh) [[ "$(basename $config_file)" == "completion.zsh" ]] || source $config_file
 
@@ -16,9 +20,6 @@ then
   source ~/.localrc
 fi
 
-# initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit
-compinit
 
 # load every completion after autocomplete loads
 for config_file ($ZSH/**/completion.zsh) source $config_file
