@@ -7,3 +7,10 @@ export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
 # add google app engine
 export PATH="$HOME/SDKs/go_appengine:$PATH"
+
+#MacTex El Capitan
+export PATH="/Library/TeX/Distributions/Programs/texbin:$PATH"
+
+# PHP Composer
+export PATH=$PATH:~/.composer/vendor/bin
+

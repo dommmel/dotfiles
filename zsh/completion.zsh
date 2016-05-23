@@ -5,3 +5,5 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*' insert-tab pending
 
 zstyle ':completion:*' menu select
+
+source /usr/local/share/zsh/site-functions/_aws

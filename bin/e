@@ -15,7 +15,18 @@
 #   # => opens the specified directory in your editor
 
 if [ "$1" == "" ] ; then
-  exec $EDITOR_BG .
+
+  # Start - sublime specific setting
+  projectfile=`ls -1 ./*.sublime-project 2>/dev/null | head -1`
+  if [ "$projectfile" == "" ] ; then
+    exec $EDITOR_BG .
+  else
+    echo "Opening $projectfile"
+    echo "Use \"e .\" if you want to see the whole folder instead"
+    exec $EDITOR_BG "$projectfile"
+  fi
+  # End - sublime specific setting
 else
   exec $EDITOR_BG "$1"
 fi
+
