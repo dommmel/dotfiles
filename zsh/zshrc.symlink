@@ -5,6 +5,7 @@ export ZSH=$HOME/.dotfiles
 
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Code
+export GOPROJECTS=~/go/src/github.com/dommmel
 
 # source every .zsh file in this rep except the ones below ./vendor
 for config_file ($ZSH/(^vendor*/)#*.zsh) [[ "$(basename $config_file)" == "completion.zsh" ]] || source $config_file
