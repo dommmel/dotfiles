@@ -14,11 +14,11 @@
 #   $ e /usr/local
 #   # => opens the specified directory in your editor
 
-if [ "$1" == "" ] ; then
+if [ -z "$1" ]; then
 
   # Start - sublime specific setting
   projectfile=`ls -1 ./*.sublime-project 2>/dev/null | head -1`
-  if [ "$projectfile" == "" ] ; then
+  if [ -z "$projectfile" ]; then
     exec $EDITOR_BG .
   else
     echo "Opening $projectfile"
