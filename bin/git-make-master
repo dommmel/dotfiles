@@ -25,6 +25,6 @@ fi
 
 git checkout ${_branch} && \
 git merge --strategy=ours --no-commit master && \
-git commit -m "promoting ${_branch} to master"  && \
+git commit --allow-empty -m "promoting ${_branch} to master"  && \
 git checkout master && \
 git merge ${_branch}
