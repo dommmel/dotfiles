@@ -46,9 +46,6 @@
         name = Dommmel
         email = dommmel@gmail.com
 
-[credential]
-	helper = osxkeychain
-
 [push]
         default = simple
 
