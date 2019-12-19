@@ -6,7 +6,7 @@ export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 export MANPATH="/usr/local/man:/usr/local/mysql/man:/usr/local/git/man:$MANPATH"
 
 # add google app engine
-export PATH="$HOME/SDKs/go_appengine:$PATH"
+export PATH="$HOME/SDKs/google-cloud-sdk/bin:$PATH"
 
 #MacTex El Capitan
 export PATH="/Library/TeX/Distributions/Programs/texbin:$PATH"
@@ -22,3 +22,5 @@ export PATH=$PATH:$GOROOT/bin
 
 # Python 2
 export PATH=$PATH:$HOME/Library/Python/2.7/bin  
+# Python 3
+export PATH=$PATH:$HOME/Library/Python/3.7/bin
